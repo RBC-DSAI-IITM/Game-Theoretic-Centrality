@@ -1,0 +1,41 @@
+package in.ac.iitm.rbcdsai.centrality.Game2;
+
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.io.FloatWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+
+/**
+ * Represents a Map2 class required for the second stage of Map for Game2.
+ * 
+ * @author M Vishnu Sankar
+ * @version 1.0
+ */
+public class Map2 extends Mapper<LongWritable, Text, Text, FloatWritable> {
+
+    private Text node = new Text();
+    float centrality = 0; 
+
+
+    /**
+     * Provides functionality for Map.
+     * 
+     * @param  key                  the key
+     * @param  value                the value
+     * @param  context              the context
+     * @throws IOException          if an IOException occured
+     * @throws InterruptedException if InterruptedException occured
+     */
+    public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+    
+        String line = value.toString();
+    	StringTokenizer tokenizer = new StringTokenizer(line);
+    	node.set(tokenizer.nextToken());
+    	centrality = Float.parseFloat(tokenizer.nextToken());
+    	context.write(node, new FloatWritable(centrality));
+    }
+}
