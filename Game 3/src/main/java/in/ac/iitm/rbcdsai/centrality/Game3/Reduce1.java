@@ -33,7 +33,11 @@ public class Reduce1 extends Reducer<Text, Text, Text, Text> {
 	}
 	
 
-
+    /**
+     * Overrides the setup method to provide functionality for Setup.
+     *
+     * @param context the context
+     */
 	@Override
 	protected void  setup(Context context){
 		Configuration conf1 = context.getConfiguration();
