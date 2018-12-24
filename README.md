@@ -2,22 +2,48 @@
 
 # Parallelized game theoretic centrality algorithms
 
-This repository contains parallelized implementations of the five game theoretic centrality algorithms proposed in [Tomasz Michalak et al (2013)](https://doi.org/10.1613/jair.3806).
+This repository contains parallelized implementations of the five game theoretic centrality algorithms proposed in [Tomasz Michalak et al (2013)](https://doi.org/10.1613/jair.3806). Please check the [publication](https://doi.org/10.1007/s12046-015-0425-z) for more details.
+
+## Authors
+
+1. [M Vishnu Sankar]()
+2. [Balaraman Ravindran](http://www.cse.iitm.ac.in/~ravi/)
 
 ## Getting started
 
-1. Ensure that Java 8 is installed in your system. If not, please head over to [Java 8 Downloads](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and install Java SE Development Kit before proceeding. Run `java -version` to enure proper installation.
-2. Clone this repository to your system and change your working directory to the cloned one.
-3. Ensure that you have a working Hadoop cluster with everything configured. Please make sure that you are running [Hadoop 3.1.1](https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-3.1.1/hadoop-3.1.1.tar.gz). Run `hadoop version` to ensure proper version.
-4. Ensure that you have `maven` installed. If not, please check [Maven](https://maven.apache.org) for installation instructions. Run `mvn -v` to ensure proper installation.
-5. Each of the directories named `Game{x}, where x = 1, 2, 3, 4, 5`; contain the source code of the algorithms. Head over to any of the directory in your cloned repo and run `mvn clean package`. This will generate a `Game{x}-1.0.0.jar`.
-6. Run the jar using `hadoop jar Game{x}-1.0.0.jar in.ac.iitm.rbcdsai.centrality.Game{x}.Main <hdfs/path/to/input> <hdfs/path/to/output>`.
+### Building from source
+
+1. Ensure that Java 8 is installed in your system. Run `java -version` to enure proper installation. If not, please install Java 8 SE Development Kit (JDK) before proceeding. (Note: You can also use OpenJDK if you prefer that.)
+2. Ensure that you have `maven` installed. Run `mvn -v` to ensure proper installation. If not, please install Maven following the official documentation.
+3. Each of the directories named `Game{x}, where x = 1, 2, 3, 4, 5` inside `src/`; contain the source code of the algorithms. Head over to the directories in your cloned repo and run `mvn clean package`. This will generate the `Game{x}-1.0.0.jar`.
+
+### Using compiled executable files
+
+1. Ensure that Java 8 is installed in your system. Run `java -version` to enure proper installation. If not, please install Java 8 SE Runtime Environment (JRE) before proceeding. (Note: You can also use OpenJDK if you prefer that.)
+2. Please download the `.jar` files from [dist/](https://github.com/RBC-DSAI-IITM/Game-theoretic-centrality/tree/master/dist) and follow the Apache Hadoop setup instructions.
+
+### Setting up Apache Hadoop
+
+1. Please install Apache Hadoop 3.1.1 and configure it according to the official documentation.
+2. Ensure `hadoop version` is displaying the correct version.
+3. Also, make sure you have a working HDFS cluster.
+
+## Usage
+
+The `.jar` files need to be run using the following format:
+
+```
+$ hadoop jar Game{x}-1.0.0.jar in.ac.iitm.rbcdsai.centrality.Game{x}.Main <hdfs/path/to/input> <hdfs/path/to/output>
+```
+
+### Input file format
+
+### Output format
+
 
 ## Citation
 
-If you use the implementations, please cite [SANKAR, M.V. & RAVINDRAN, B. Sadhana (2015) 40: 1821](https://doi.org/10.1007/s12046-015-0425-z).
-
-Here's also a BibTeX entry for the publication:
+If you use the implementations, please cite:
 
 ```
 @Article{SANKAR2015,
