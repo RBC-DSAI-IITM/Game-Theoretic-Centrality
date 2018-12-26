@@ -38,8 +38,30 @@ $ hadoop jar Game{x}-1.0.0.jar in.ac.iitm.rbcdsai.centrality.Game{x}.Main <hdfs/
 
 ### Input file format
 
+The input file is basically an adjacency list containing edges of the graph. Each line denotes an edge, whose nodes are separated by a single whitespace as the delimiter.
+
+A few things to also note about the format:
+1. No comments or blank lines.
+2. No annotations. 
+3. No explicit mention of total nodes or edges.
+
+For clarity, here's a basic example of what `input.txt` can be:
+
+```
+1 2
+2 3
+3 4
+4 5
+```
+
 ### Output format
 
+The output directory name will depend on the number of steps required for the respective algorithm to process the input file. For example, `Game 1` has two sets of Map-Reduce, and so, the final output file will be in the directory path: `<hdfs/path/to/output>2`. The output file will have nodes listed along with the respective Shapley value, like so:
+
+```
+1 2.556
+2 5.444
+```
 
 ## Citation
 
