@@ -6,35 +6,38 @@ This repository contains parallelized implementations of the five game theoretic
 
 ## Authors
 
-1. [M Vishnu Sankar]()
+1. M Vishnu Sankar
 2. [Balaraman Ravindran](http://www.cse.iitm.ac.in/~ravi/)
 
 ## Getting started
 
 ### Building from source
 
-1. Ensure that Java 8 is installed in your system. Run `java -version` to enure proper installation. If not, please install Java 8 SE Development Kit (JDK) before proceeding. (Note: You can also use OpenJDK if you prefer that.)
-2. Ensure that you have `maven` installed. Run `mvn -v` to ensure proper installation. If not, please install Maven following the official documentation.
-3. Each of the directories named `Game{x}, where x = 1, 2, 3, 4, 5` inside `src/`; contain the source code of the algorithms. Head over to the directories in your cloned repo and run `mvn clean package`. This will generate the `Game{x}-1.0.0.jar`.
+1. Ensure that Java 8 is installed in your system. Run `java -version` to ensure proper installation. If not, please install [Java SE Development Kit 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) before proceeding. You can also use [OpenJDK](https://openjdk.java.net/install/) if you prefer that.
+2. Ensure that you have `maven` installed. Run `mvn -v` to ensure proper installation. If not, please install [Maven](https://maven.apache.org/) following the official documentation.
+3. Clone this repository to your system and change your working directory to the cloned one.
+4. Each of the directories named `Game{x}, where x = 1, 2, 3, 4, 5` inside `src/`; contain the source code of the algorithms. Head over to the directories in your cloned repo and run `mvn clean package`. This will generate the `Game{x}-1.0.0.jar`.
 
 ### Using compiled executable files
 
-1. Ensure that Java 8 is installed in your system. Run `java -version` to enure proper installation. If not, please install Java 8 SE Runtime Environment (JRE) before proceeding. (Note: You can also use OpenJDK if you prefer that.)
+1. Ensure that Java 8 is installed in your system. Run `java -version` to enure proper installation. If not, please install [Java SE Runtime Environment 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) before proceeding. You can also use [OpenJDK](https://openjdk.java.net/install/) if you prefer that.
 2. Please download the `.jar` files from [dist/](https://github.com/RBC-DSAI-IITM/Game-theoretic-centrality/tree/master/dist) and follow the Apache Hadoop setup instructions.
 
 ### Setting up Apache Hadoop
 
-1. Please install Apache Hadoop 3.1.1 and configure it according to the official documentation.
+1. Please install [Apache Hadoop 3.1.1](https://hadoop.apache.org/release/3.1.1.html) and configure it according to the official documentation.
 2. Ensure `hadoop version` is displaying the correct version.
-3. Also, make sure you have a working HDFS cluster.
+3. Also, make sure you have a working HDFS cluster before proceeding.
 
 ## Usage
 
-The `.jar` files need to be run using the following format:
+The `.jar` files need to be run like so:
 
 ```
 $ hadoop jar Game{x}-1.0.0.jar in.ac.iitm.rbcdsai.centrality.Game{x}.Main <hdfs/path/to/input> <hdfs/path/to/output>
 ```
+
+where the algorithm to run can be chosen by setting **x** to be one of  {1, 2, 3, 4, 5}.
 
 ### Input file format
 
@@ -61,6 +64,14 @@ The output directory name will depend on the number of steps required for the re
 ```
 1 2.556
 2 5.444
+```
+
+## Example
+
+Here's an example of running `Game 1` on [email-EuAll](https://snap.stanford.edu/data/email-EuAll.html) dataset from [SNAP](https://snap.stanford.edu/), and input file being stored in HDFS, having input path as `/usr/hadoop/email-Eu-core.txt` and output directory path as `/usr/hadoop/email-Eu-core-output`:
+
+```
+$ hadoop jar Game1-1.0.0.jar in.ac.iitm.rbcdsai.centrality.Game1.Main '/usr/hadoop/email-Eu-core.txt' '/usr/hadoop/email-Eu-core-output'
 ```
 
 ## Citation
